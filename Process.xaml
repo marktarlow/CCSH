@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1206.4,1051.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>565.6,863.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -63,10 +63,9 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="375.2,885.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="375.2,698.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="clientID" />
       <Variable x:TypeArguments="x:String" Name="clientName" />
@@ -79,21 +78,12 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetWorkItemDetails workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ACME_CCSH/GetWorkItemDetails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemID">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorkItemID" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_clientID">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="clientID" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_clientName">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="clientName" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_clientCountry">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="clientCountry" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemID">[in_WorkItemID]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_clientID">[clientID]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_clientName">[clientName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_clientCountry">[clientCountry]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Open Hash Site" DisplayName="Invoke GoToHashSiteSHA1 workflow" sap:VirtualizedContainerService.HintSize="333.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SHA1/GoToHashSiteSHA1.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
@@ -106,25 +96,15 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateHash workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="SHA1/CreateHash.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientHashString">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="clientID +&quot;-&quot; + clientName + &quot;-&quot; + clientCountry" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_clientHash">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_clientHash" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_clientHashString">[clientID +"-" + clientName + "-" + clientCountry]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_clientHash">[out_clientHash]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AddHashToWorkItem workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ACME_CCSH/AddHashToWorkItem.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemID">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorkItemID" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientHash">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_clientHash" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemID">[in_WorkItemID]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_clientHash">[out_clientHash]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="CloseTab_3" />
   </Sequence>
 </Activity>
