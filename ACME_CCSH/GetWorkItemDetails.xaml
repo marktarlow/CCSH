@@ -1,0 +1,202 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetWorkItemDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_WorkItemID" Type="InArgument(x:String)" />
+    <x:Property Name="out_clientID" Type="OutArgument(x:String)" />
+    <x:Property Name="out_clientName" Type="OutArgument(x:String)" />
+    <x:Property Name="out_clientCountry" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>821.6,428</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Get Details To Hash From ACME site" DisplayName="Get Work Item Details" sap:VirtualizedContainerService.HintSize="241.6,176.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe ACME'" sap:VirtualizedContainerService.HintSize="800,1020" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="a7c4ec5929d609b5fe4499d2bc78ba94" Selector="&lt;html title='ACME System 1 - Work Items' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="766.4,872.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="724.8,60" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[&quot;https://acme-test.uipath.com/work-items/&quot; + in_WorkItemID]" />
+            <ui:AnchorBase AnchorPosition="Left" DisplayName="Client ID" sap:VirtualizedContainerService.HintSize="724.8,200" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+              <ui:AnchorBase.Action>
+                <ActivityAction x:TypeArguments="ui:Anchor">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                  </ActivityAction.Argument>
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2d4cf9a9-58b0-4b28-9171-fe9111452615">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                    <ui:GetValue.Value>
+                      <OutArgument x:TypeArguments="x:String">[out_clientID]</OutArgument>
+                    </ui:GetValue.Value>
+                  </ui:GetValue>
+                </ActivityAction>
+              </ui:AnchorBase.Action>
+              <ui:AnchorBase.AnchorProvider>
+                <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'B'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                  <ui:WaitUiElementAppear.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="310589a6-a5d4-4f08-a169-9f9f565ae4dd" InformativeScreenshot="41a0f622fec364d94e8d7a3b32a06555" Selector="&lt;webctrl idx='1' tag='B' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:WaitUiElementAppear.Target>
+                </ui:WaitUiElementAppear>
+              </ui:AnchorBase.AnchorProvider>
+            </ui:AnchorBase>
+            <ui:AnchorBase AnchorPosition="Left" DisplayName="Client Name" sap:VirtualizedContainerService.HintSize="724.8,200" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+              <ui:AnchorBase.Action>
+                <ActivityAction x:TypeArguments="ui:Anchor">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                  </ActivityAction.Argument>
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2d4cf9a9-58b0-4b28-9171-fe9111452615">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                    <ui:GetValue.Value>
+                      <OutArgument x:TypeArguments="x:String">[out_clientName]</OutArgument>
+                    </ui:GetValue.Value>
+                  </ui:GetValue>
+                </ActivityAction>
+              </ui:AnchorBase.Action>
+              <ui:AnchorBase.AnchorProvider>
+                <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'B'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                  <ui:WaitUiElementAppear.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="638e8391-3130-449a-879e-02740b48ad98" InformativeScreenshot="3eb818a4c2841179e47fb9a8fa8d8bba" Selector="&lt;webctrl idx='2' tag='B' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:WaitUiElementAppear.Target>
+                </ui:WaitUiElementAppear>
+              </ui:AnchorBase.AnchorProvider>
+            </ui:AnchorBase>
+            <ui:AnchorBase AnchorPosition="Left" DisplayName="Client Country" sap:VirtualizedContainerService.HintSize="724.8,200" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
+              <ui:AnchorBase.Action>
+                <ActivityAction x:TypeArguments="ui:Anchor">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                  </ActivityAction.Argument>
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="07d7effc-7c73-4556-a6a6-bcebf825d5c1">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                    <ui:GetValue.Value>
+                      <OutArgument x:TypeArguments="x:String">[out_clientCountry]</OutArgument>
+                    </ui:GetValue.Value>
+                  </ui:GetValue>
+                </ActivityAction>
+              </ui:AnchorBase.Action>
+              <ui:AnchorBase.AnchorProvider>
+                <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'B'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+                  <ui:WaitUiElementAppear.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fb617e23-96df-423e-9c10-f4ee26d4c7bd" InformativeScreenshot="0bedd76825bb4a4b1595e2d49abcb543" Selector="&lt;webctrl idx='3' tag='B' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:WaitUiElementAppear.Target>
+                </ui:WaitUiElementAppear>
+              </ui:AnchorBase.AnchorProvider>
+            </ui:AnchorBase>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>
