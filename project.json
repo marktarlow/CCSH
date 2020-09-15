@@ -3,6 +3,7 @@
   "description": "Project 1. This Project Calcualates A Client Secuirty Hash, using the ACME site provided by UiPath.\r\n",
   "main": "Main.xaml",
   "dependencies": {
+    "Compression.Activities": "[1.0.5]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.9.1-preview]",
     "UiPath.Mail.Activities": "[1.9.2-preview]",
@@ -13,7 +14,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.8.0.0",
-  "projectVersion": "1.0.1",
+  "projectVersion": "1.0.2",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
